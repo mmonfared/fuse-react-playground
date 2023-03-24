@@ -1,0 +1,16 @@
+name: Build and Serve
+on:
+  push:
+    branches: master
+
+jobs:
+  Main Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitCode
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+      - run: npm install package.json
+      - run: npm run serve
