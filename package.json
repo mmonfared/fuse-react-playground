@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mmonfared/fuse-react-playground#readme",
   "devDependencies": {
-    "serve": "^14.2.0"
+    "serve": "^14.2.0",
+    "wait-on": "^7.0.1"
   }
 }
