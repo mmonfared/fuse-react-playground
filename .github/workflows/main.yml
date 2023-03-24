@@ -9,8 +9,12 @@ jobs:
     steps:
       - name: Checkout GitCode
         uses: actions/checkout@v3
-
+      - name: Setup Node
+        uses: actions/setup-node@v3.6.0
       - name: Install dependencies
-        uses: actions/setup-node@v3
-      - run: npm install package.json
-      - run: npm run serve
+        run: |
+          npm install package.json
+          npm ci
+          npm run serve & npx wait-on http://127.0.0.1:3000
+        env:
+          CI: true
