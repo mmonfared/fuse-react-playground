@@ -1,20 +1,23 @@
-name: Build and Serve
-on:
-  push:
-    branches: master
-
+name: Build and Deploy
+on: [push]
+permissions:
+  contents: write
 jobs:
-  Main-Job:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout GitCode
+      - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3.6.0
-      - name: Install dependencies
-        run: |
-          npm install package.json
-          npm ci
-          npm run serve & npx wait-on http://127.0.0.1:3000
-        env:
-          CI: true
+      # - name: Setup Node
+      #   uses: actions/setup-node@v3.6.0
+      # - name: Install dependencies
+      #   run: |
+      #     npm install package.json
+      #     npm ci
+      #     npm run serve & npx wait-on http://127.0.0.1:3000
+      #   env:
+      #     CI: true
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
